@@ -2,7 +2,22 @@ import pandas as pd
 
 # Cargar datos
 df = pd.read_csv("datos.csv")
+import pandas as pd
 
+# Cargar datos
+df1 = pd.read_csv("challenge1-data-science-latam-main/base-de-datos-challenge1-latam/tienda_1.csv")
+df2 = pd.read_csv("challenge1-data-science-latam-main/base-de-datos-challenge1-latam/tienda_2.csv")
+df3 = pd.read_csv("challenge1-data-science-latam-main/base-de-datos-challenge1-latam/tienda_3.csv")
+df4 = pd.read_csv("challenge1-data-science-latam-main/base-de-datos-challenge1-latam/tienda_4.csv")
+
+# Agregar columna identificadora de tienda
+df1["tienda"] = "Tienda 1"
+df2["tienda"] = "Tienda 2"
+df3["tienda"] = "Tienda 3"
+df4["tienda"] = "Tienda 4"
+
+# Unir todos los datos en un solo DataFrame
+df = pd.concat([df1, df2, df3, df4], ignore_index=True)
 # 1️⃣ Facturación total por tienda
 df["facturacion"] = df["precio"] * df["cantidad"]
 facturacion_tienda = df.groupby("tienda")["facturacion"].sum()
