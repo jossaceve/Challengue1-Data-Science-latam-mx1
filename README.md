@@ -1,7 +1,10 @@
 import pandas as pd
 
+# Si estás en Colab normalmente ya viene instalado pandas
+!pip install pandas numpy
 
-# Cargar datos
+import pandas as pd
+import numpy as np# Cargar datos
 df1 = pd.read_csv("challenge1-data-science-latam-main/base-de-datos-challenge1-latam/tienda_1.csv")
 df2 = pd.read_csv("challenge1-data-science-latam-main/base-de-datos-challenge1-latam/tienda_2.csv")
 df3 = pd.read_csv("challenge1-data-science-latam-main/base-de-datos-challenge1-latam/tienda_3.csv")
@@ -55,3 +58,15 @@ print(menos_vendidos)
 
 print("\nCosto promedio de envío por tienda:")
 print(costo_envio_promedio)
+
+
+# Crear columna de facturación
+df["facturacion"] = df["precio"] * df["cantidad"]
+
+facturacion_tienda = df.groupby("tienda")["facturacion"].sum().sort_values(ascending=False)
+
+print("Facturación total por tienda:")
+display(facturacion_tienda)
+
+print("\nTienda con mayor facturación:")
+print(facturacion_tienda.idxmax())
