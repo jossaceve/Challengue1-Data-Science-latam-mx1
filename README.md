@@ -1,8 +1,5 @@
 import pandas as pd
 
-# Cargar datos
-df = pd.read_csv("datos.csv")
-import pandas as pd
 
 # Cargar datos
 df1 = pd.read_csv("challenge1-data-science-latam-main/base-de-datos-challenge1-latam/tienda_1.csv")
